@@ -2146,32 +2146,6 @@ client.on('message', function(message) {
     }
 });
 
-client.on('message', EpicCodes => {
-  if(EpicCodes.content.startsWith(`<@${client.user.id}>`,`@${client.user.username}`)) {
-var p = "``"+prefix+"``";
-var owner = "``name for bot owner``";
-let EpicEmbed = new Discord.RichEmbed()
-.setTitle('**Info**')
-.setDescription(`**
-❖════════════════❖
-» Bot Name : ${client.user.username}
-❖════════════════❖
-» Prefix : ${p}
-❖════════════════❖
-» Owner : ${owner}
-❖════════════════❖
-» to invite bot type : ${p}invite
-❖════════════════❖
-» if u will see commands type : ${p}help
-❖════════════════❖
-
-**`)
-.setFooter(client.user.username`By ${owner}`)
-.setColor("RANDOM")
-EpicCodes.channel.send({embed:EpicEmbed}); 
-  }
-});
-
     if (message.content === "Say SA") {
         setInterval(function(){
         message.edit('**SA**')
