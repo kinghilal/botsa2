@@ -2111,5 +2111,85 @@ client.on("message", message => {
     }
 });
 
+client.on("guildMemberAdd", m => { 
+let room = m.guild.channels.find(a => a.name === '❄-fake'); 
+if (datediff(parseDate(moment(m.user.createdTimestamp).format('l')), parseDate(moment().format('l'))) < 30) {
+    m.ban() .then(( 
+        room.send(`**:no_entry: | ${m} Has been banned for: \`fake\`**`)
+    ));
+}; 
+function parseDate(str) {
+    var mdy = str.split('/'); 
+    return new Date(mdy[2], mdy[0]-1, mdy[1]); 
+};
+
+function datediff(first, second) {
+    return Math.round((second-first)/(1000*60*60*24));
+};
+});
+
+client.on("guildCreate", guild => {
+  console.log(` Join Bot Of Server ${guild.name} Owner Of Server ${guild.owner.user.username}!`)
+});
+
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var Huler = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setTitle('``! لقد تلقيت رساله جديدة في الخاص !``')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From ${message.author.tag} (${message.author.presence.status.toUpperCase()})`)
+    client.channels.get("545641149834985473").send({embed:Huler});
+    }
+});
+
+client.on('message', EpicCodes => {
+  if(EpicCodes.content.startsWith(`<@${client.user.id}>`,`@${client.user.username}`)) {
+var p = "``"+prefix+"``";
+var owner = "``name for bot owner``";
+let EpicEmbed = new Discord.RichEmbed()
+.setTitle('**Info**')
+.setDescription(`**
+❖════════════════❖
+» Bot Name : ${client.user.username}
+❖════════════════❖
+» Prefix : ${p}
+❖════════════════❖
+» Owner : ${owner}
+❖════════════════❖
+» to invite bot type : ${p}invite
+❖════════════════❖
+» if u will see commands type : ${p}help
+❖════════════════❖
+
+**`)
+.setFooter(client.user.username`By ${owner}`)
+.setColor("RANDOM")
+EpicCodes.channel.send({embed:EpicEmbed}); 
+  }
+});
+
+    if (message.content === "Say SA") {
+        setInterval(function(){
+        message.edit('**SA**')
+        message.edit('**SA B**')
+        message.edit('**SA Bo**')
+        message.edit('**SA Bot**')
+        message.edit('**SA Bot T**')
+        message.edit('**SA Bot Te**')
+        message.edit('**SA Bot Te**')
+        message.edit('**SA Bot Tea**')
+        message.edit('**SA Bot Team .**')
+        message.edit('**SA Bot Team ..**')
+      }, 3)
+      }
+
+
+
+    });
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
